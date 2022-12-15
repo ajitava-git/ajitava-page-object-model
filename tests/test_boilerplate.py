@@ -20,6 +20,7 @@ def test_boilerplate(test_obj):
         #This is the test object, you can change it to the desired page with relevance to the page factory
         test_obj = PageFactory.get_page_object("main page")
 
+        #Check the current temperature and select moisturizer/sunscreen based on temperature
         test_obj.check_temperature()
 
         #Print out the result
