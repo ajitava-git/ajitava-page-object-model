@@ -9,7 +9,7 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/qxf2/qxf2-page-object-model)
 
 --------
-A Pythonic Selenium, Appium and API test automation framework
+A Pythonic Selenium, Appium and API test automation framework used by Ajitava
 --------
 You can use this test automation framework to write:
 
