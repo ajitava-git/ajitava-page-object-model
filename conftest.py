@@ -3,13 +3,11 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from page_objects.PageFactory import PageFactory
 from conf import browser_os_name_conf
 from conf import base_url_conf
-from conf import api_example_conf
 from conf import report_portal_conf
 from utils import post_test_reports_to_slack
 from utils.email_pytest_report import Email_Pytest_Report
-from endpoints.API_Player import API_Player
 from utils import Tesults
-from utils import interactive_mode
+#from utils import interactive_mode
 import argparse
 
 @pytest.fixture
@@ -87,7 +85,7 @@ def test_mobile_obj(mobile_os_name, mobile_os_version, device_name, app_package,
     except Exception as e:
         print("Exception when trying to run test: %s"%__file__)
         print("Python says:%s"%str(e))
-
+"""
 @pytest.fixture
 def test_api_obj(interactivemode_flag,api_url=api_example_conf.api_url):
     "Return an instance of Base Page that knows about the third party integrations"
@@ -102,6 +100,8 @@ def test_api_obj(interactivemode_flag,api_url=api_example_conf.api_url):
     except Exception as e:
         print("Exception when trying to run test:%s" % __file__)
         print("Python says:%s" % str(e))
+
+"""
 
 @pytest.fixture
 def testname(request):
