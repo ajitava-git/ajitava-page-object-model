@@ -23,6 +23,9 @@ def test_boilerplate(test_obj):
         #Check the current temperature and select moisturizer/sunscreen based on temperature
         test_obj.check_temperature()
 
+        test_obj = PageFactory.get_page_object("moisturizer page")
+        test_obj.select_moisturizer()
+
         #Print out the result
         test_obj.write_test_summary()
         expected_pass = test_obj.result_counter
