@@ -6,6 +6,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from page_objects.PageFactory import PageFactory
 from utils.Option_Parser import Option_Parser
 import pytest
+import conf.locators_conf as locators
 
 
 @pytest.mark.GUI
@@ -23,9 +24,14 @@ def test_boilerplate(test_obj):
         #Check the current temperature and select moisturizer/sunscreen based on temperature
         test_obj.check_temperature()
 
-        test_obj = PageFactory.get_page_object("moisturizer page")
-        test_obj.select_moisturizer()
-
+        #condition for moisturizer and sunscreen page
+        if test_obj.check_element_present(locators.moisturizer_title):
+            test_obj = PageFactory.get_page_object("moisturizer page")
+            test_obj.select_moisturizer()          
+        else:
+            test_obj = PageFactory.get_page_object("sunscreen page")
+            test_obj.select_sunscreen()
+        
         #Print out the result
         test_obj.write_test_summary()
         expected_pass = test_obj.result_counter

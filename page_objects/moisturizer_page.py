@@ -15,6 +15,7 @@ class Moisturizer_Page(Base_Page):
     least_expensive_almond = locators.add_least_expensive_almond
     least_expensive_aloe = locators.add_least_expensive_aloe
     body = locators.body
+    add_cart = locators.add_cart
 
     def select_moisturizer(self):
 
@@ -28,7 +29,7 @@ class Moisturizer_Page(Base_Page):
 
         clean_text = []
 
-        #Getting the text in raw format and stripping to get only moisturizer/sunscreen name and price
+        #Getting the text in raw format and stripping to get only moisturizer name and price
         clean_text = result_element_text.decode('utf-8').strip('\n').strip('Cart - Empty').replace('Moisturizers','').replace('Add','').strip('© Qxf2 Services 2018 - 2022').replace('Rs.','').replace('Price:','')
         print(clean_text)
 
@@ -40,7 +41,7 @@ class Moisturizer_Page(Base_Page):
         res_list = [item.replace('\n', '') for item in temp_list]
         print(res_list)
 
-        #Converting to Dictionary to get key,value pair of moisturizer/sunscreen name and price
+        #Converting to Dictionary to get key,value pair of moisturizer name and price
         res_dct = map(lambda i: (res_list[i], res_list[i+1]), range(len(res_list)-1)[::2])
         moisturizer_dict = dict(res_dct)
         print(moisturizer_dict)
@@ -54,11 +55,14 @@ class Moisturizer_Page(Base_Page):
             if key.__contains__('Aloe' or 'aloe'):
                 print(key)
                 #click the add button for aloe moisturizer with least value
-                self.click_element
+                self.click_element(self.least_expensive_aloe)
                 break 
 
         for key in sort_cream:
             if key.__contains__('Almond' or 'almond'):
                 print(key)
                 #click the add button for almond moisturizer with least value
-                break                
+                self.click_element(self.least_expensive_almond)
+                #click add to cart
+                self.click_element(self.add_cart)
+                break

@@ -50,6 +50,7 @@ class WeatherShop_Main_Page(Base_Page):
                 negative='Moisturizer is not present',
                 level='debug')
             self.click_element(self.moisturizer)
+
         elif int(current_temperature) > temperature_value:
             result_flag = self.check_element_present(self.sunscreen)
             self.log_result(result_flag,
